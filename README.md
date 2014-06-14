@@ -10,7 +10,7 @@ phpize<br />
 ./configure --with-php-config=php-config<br />
 make && make install<br />
 
-<strong>扩展部署<strong>
+<strong>扩展部署</strong>
 php.ini配置文件新增以下行：<br />
 extension = dlog.so<br />
 dlog.enable = 1 // 默认情况下是关闭状态<br />
