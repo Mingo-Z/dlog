@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Dlog : dlog for PHP extension" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Dlog</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/fengxu0824/dlog">View on GitHub</a>
+
+          <h1 id="project_title">Dlog</h1>
+          <h2 id="project_tagline">dlog for PHP extension</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/fengxu0824/dlog/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/fengxu0824/dlog/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a name="dlog" class="anchor" href="#dlog"><span class="octicon octicon-link"></span></a>dlog</h1>
+
+<blockquote>
+<p>dlog是一个轻量级的增强PHP文件记录错误日志的扩展，它不同于xdebug，  没有xdebug极其复杂的功能，可用于关闭错误输出、打开错误日志的线上环境的部署，
+便于线上跟踪程序错误，及其Stack trace。</p>
+</blockquote>
+
+<h2>
+<a name="%E4%BB%A3%E7%A0%81%E7%BC%96%E8%AF%91" class="anchor" href="#%E4%BB%A3%E7%A0%81%E7%BC%96%E8%AF%91"><span class="octicon octicon-link"></span></a>代码编译</h2>
+
+<ul>
+<li>phpize</li>
+<li>./configure --with-php-config=php-config</li>
+<li>make &amp;&amp; make install</li>
+</ul><h2>
+<a name="%E6%89%A9%E5%B1%95%E9%83%A8%E7%BD%B2" class="anchor" href="#%E6%89%A9%E5%B1%95%E9%83%A8%E7%BD%B2"><span class="octicon octicon-link"></span></a>扩展部署</h2>
+
+<ul>
+<li>php.ini配置文件新增以下行：</li>
+<li>extension = dlog.so</li>
+<li>dlog.enable = 1 <em>// 默认情况下是关闭状态</em>
+</li>
+</ul><hr><p>email: <a href="mailto:fengxu0824@foxmail.com">fengxu0824@foxmail.com</a></p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Dlog maintained by <a href="https://github.com/fengxu0824">fengxu0824</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
