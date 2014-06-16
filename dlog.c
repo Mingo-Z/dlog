@@ -151,7 +151,7 @@ void dlog_error_callback(
 
 PHP_GINIT_FUNCTION(dlog)
 {
-	DLOG_G(enable) = 0;
+	dlog_globals->enable = 0;
 }
 
 /* {{{ PHP_MINIT_FUNCTION
