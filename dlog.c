@@ -98,15 +98,16 @@ void dlog_error_callback(
 			,dindex = 0;
 		struct _zend_execute_data *edata = EG(current_execute_data);
 		zval array;
+		HashTable *val = NULL;
 		memset(dline, 0, DLOG_LINE_LEN);
 		memset(&array, 0, sizeof(array));
-		HashTable *val = Z_ARRVAL(array);
 
 		while (edata) {
 			if (edata->opline && (edata->opline->opcode == ZEND_DO_FCALL || edata->opline->opcode == ZEND_DO_FCALL_BY_NAME)) {
 				if (!val) {
 					array_init(&array);
-				}
+					val = Z_ARRVAL(array);
+				} 
 				zend_hash_next_index_insert(val, (void*)&edata, sizeof(void*), NULL);
 			}
 			edata = edata->prev_execute_data;
