@@ -144,7 +144,7 @@ void dlog_error_callback(
 				elem = elem->pListLast;
 				dindex++;
 			}
-			zend_hash_destroy(val);
+			zval_dtor(&array);
 		}		
 	}
 	old_error_callback(type, filename, lineno, format, args);
