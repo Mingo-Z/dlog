@@ -44,6 +44,7 @@ PHP_MINFO_FUNCTION(dlog);
 
 ZEND_BEGIN_MODULE_GLOBALS(dlog)
 	zend_bool enable;
+	int max_nesting_level;
 ZEND_END_MODULE_GLOBALS(dlog)
 
 PHP_GINIT_FUNCTION(dlog);

@@ -72,7 +72,8 @@ ZEND_GET_MODULE(dlog)
 /* {{{ PHP_INI
  */
 PHP_INI_BEGIN()
-    STD_PHP_INI_ENTRY("dlog.enable", "0", PHP_INI_ALL, OnUpdateLong, enable, zend_dlog_globals, dlog_globals)
+    STD_PHP_INI_ENTRY("dlog.enable", "0", PHP_INI_ALL, OnUpdateBool, enable, zend_dlog_globals, dlog_globals)
+    STD_PHP_INI_ENTRY("dlog.max_nesting_level", "20", PHP_INI_ALL, OnUpdateLong, max_nesting_level, zend_dlog_globals, dlog_globals)
 PHP_INI_END()
 /* }}} */
 
@@ -103,15 +104,20 @@ void dlog_error_callback(
 		memset(&array, 0, sizeof(array));
 
 		while (edata) {
-			if (edata->opline && (edata->opline->opcode == ZEND_DO_FCALL || edata->opline->opcode == ZEND_DO_FCALL_BY_NAME)) {
+			if (dindex < DLOG_G(max_nesting_level) && edata->opline && 
+					(edata->opline->opcode == ZEND_DO_FCALL || 
+					 	edata->opline->opcode == ZEND_DO_FCALL_BY_NAME)) {
 				if (!val) {
 					array_init(&array);
 					val = Z_ARRVAL(array);
 				} 
 				zend_hash_next_index_insert(val, (void*)&edata, sizeof(void*), NULL);
+				dindex++;
 			}
 			edata = edata->prev_execute_data;
 		}
+
+		dindex = 0;
 		if (val) {
 			Bucket *elem = val->pListTail;
 			while (elem) {
@@ -145,6 +151,9 @@ void dlog_error_callback(
 				dindex++;
 			}
 			zval_dtor(&array);
+			if (dindex == DLOG_G(max_nesting_level)) {
+				php_log_err("+++ dump failed, more than dlog.max_nesting_level seetings" TSRMLS_CC);
+			}
 		}		
 	}
 	old_error_callback(type, filename, lineno, format, args);
