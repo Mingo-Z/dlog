@@ -193,8 +193,8 @@ PHP_MINFO_FUNCTION(dlog)
 	DISPLAY_INI_ENTRIES();
 	php_info_print_table_start();
 	php_info_print_table_header(2, "dlog support", "enabled");
-	php_info_print_table_row(2, "dlog version", DLOG_VERSION);
-	php_info_print_table_row(2, "dlog author", "fengxu");
+	php_info_print_table_row(2, "Version", DLOG_VERSION);
+	php_info_print_table_row(2, "Author", "fengxu");
 	php_info_print_table_end();
 
 }
