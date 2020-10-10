@@ -13,6 +13,4 @@
 * extension = dlog.so
 * dlog.enable = 1 *// 默认情况下是关闭状态*
 
----
-email: <fengxu0824@foxmail.com>
 
